@@ -1,0 +1,18 @@
+var copyToClipboard = str => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
+var text = []
+document.querySelectorAll('.P9YgZ').forEach((o, i) => {
+  var user = o.querySelector('.FPmhX').innerText,
+      body = o.querySelector('span').innerText.replace(/\n+/, ' ', 'g'),
+      total = body.match(/@/g) ? body.match(/@/g).length : 0;
+
+  text.push(user + "\t" + body + "\t" + total)
+})
+copyToClipboard(text.join("\n"))
+alert('Comentários copiados para o clipboard')
